@@ -1,6 +1,6 @@
-/db/
-/db_backup/
-/web/
+/db/*
+/db_backups/*
+/web/*
 .idea/
 
 
