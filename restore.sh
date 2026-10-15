@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Użycie: ./restore.sh db_backups/backup-YYYY-MM-DD.sql
+# Użycie: ./restore.sh backups/backup-YYYY-MM-DD.sql
 set -euo pipefail
 cd "$(dirname "$0")"
 source .env
@@ -39,7 +39,7 @@ until docker compose exec -T db pg_isready -q -U "${REDMINE_DB_USERNAME}" -d "${
   sleep 1
 done
 
-mkdir -p db_backups
+mkdir -p backups
 PRE_RESTORE="db_backups/pre-restore-$(date +%F-%H%M%S).sql"
 echo "==> Backup aktualnej bazy do ${PRE_RESTORE}"
 docker compose exec -T db pg_dump -U "${REDMINE_DB_USERNAME}" "${DB}" > "${PRE_RESTORE}"

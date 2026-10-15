@@ -24,7 +24,7 @@ Przed użyciem należy zainstalować i uruchomić [Docker Desktop](https://www.d
 ./start.sh     # uruchomienie
 ./stop.sh      # zatrzymanie
 ./backup.sh    # kopia zapasowa bazy
-./restore.sh db_backups/backup-YYYY-MM-DD.sql   # przywrócenie bazy
+./restore.sh backups/backup-YYYY-MM-DD.sql   # przywrócenie bazy
 ```
 
 Aplikacja jest dostępna na porcie ustawionym w `.env` (`REDMINE_PORT`).
