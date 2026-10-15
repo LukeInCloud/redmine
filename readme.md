@@ -10,11 +10,11 @@ Konfiguracja uruchomieniowa [Redmine](https://www.myredmine.com/) w Dockerze (Re
 | `.env`               | Konfiguracja: port, użytkownik i hasło bazy                   |
 | `start.sh`           | Uruchamia aplikację                                           |
 | `stop.sh`            | Zatrzymuje aplikację                                          |
-| `backup.sh`          | Zapisuje zrzut bazy do `db_backups/backup-<data>.sql`         |
+| `backup.sh`          | Zapisuje zrzut bazy (`backups/backup-<data>.sql`) i archiwum plików z `web/` (`backups/web-<data>.tar.gz`) |
 | `restore.sh`         | Przywraca bazę ze wskazanego pliku (patrz niżej)              |
 | `db/`                | Dane PostgreSQL                                               |
 | `web/`               | Pliki (załączniki) Redmine                                    |
-| `db_backups/`        | Kopie zapasowe bazy                                           |
+| `backups/`        | Kopie zapasowe bazy i plików                                           |
 
 ## Użycie
 
@@ -23,7 +23,7 @@ Przed użyciem należy zainstalować i uruchomić [Docker Desktop](https://www.d
 ```bash
 ./start.sh     # uruchomienie
 ./stop.sh      # zatrzymanie
-./backup.sh    # kopia zapasowa bazy
+./backup.sh    # kopia zapasowa bazy i plików (web/)
 ./restore.sh backups/backup-YYYY-MM-DD.sql   # przywrócenie bazy
 ```
 
@@ -31,7 +31,7 @@ Aplikacja jest dostępna na porcie ustawionym w `.env` (`REDMINE_PORT`).
 
 ### Przywracanie bazy
 
-`restore.sh` zatrzymuje aplikację (jeśli działała), robi kopię aktualnej bazy do `db_backups/pre-restore-*.sql`, czyści bazę, wczytuje wskazany plik i uruchamia aplikację z powrotem – o ile działała przed przywracaniem. Przywracana jest tylko baza; załączniki w `web/` pozostają bez zmian.
+`restore.sh` zatrzymuje aplikację (jeśli działała), robi kopię aktualnej bazy do `backups/pre-restore-*.sql`, czyści bazę, wczytuje wskazany plik i uruchamia aplikację z powrotem – o ile działała przed przywracaniem. Przywracana jest tylko baza; załączniki w `web/` pozostają bez zmian.
 
 ## Licencja
 

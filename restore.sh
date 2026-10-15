@@ -40,7 +40,7 @@ until docker compose exec -T db pg_isready -q -U "${REDMINE_DB_USERNAME}" -d "${
 done
 
 mkdir -p backups
-PRE_RESTORE="db_backups/pre-restore-$(date +%F-%H%M%S).sql"
+PRE_RESTORE="backups/pre-restore-$(date +%F-%H%M%S).sql"
 echo "==> Backup aktualnej bazy do ${PRE_RESTORE}"
 docker compose exec -T db pg_dump -U "${REDMINE_DB_USERNAME}" "${DB}" > "${PRE_RESTORE}"
 
