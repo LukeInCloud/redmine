@@ -10,6 +10,7 @@ services:
       - ${REDMINE_PORT}:3000
     volumes:
       - ./web:/usr/src/redmine/files
+      - ./plugins:/usr/src/redmine/plugins
   db:
     image: postgres:15.1
     restart: unless-stopped
